@@ -6,6 +6,9 @@ package com.adpl.praktikumadpl4_solid1.app;
 
 import com.adpl.praktikumadpl4_solid1.controller.RentalController;
 import com.adpl.praktikumadpl4_solid1.model.Kendaraan;
+import com.adpl.praktikumadpl4_solid1.model.Minibus;
+import com.adpl.praktikumadpl4_solid1.model.Mobil;
+import com.adpl.praktikumadpl4_solid1.model.Motor;
 
 /**
  *
@@ -16,26 +19,22 @@ public class Main {
         RentalController controller = new RentalController();
         
         //Data awal
-        controller.tambahDataAwal(new Kendaraan(
+        controller.tambahDataAwal(new Mobil(
                 "B 1234 KKK", 
                 "Toyota Alphard", 
-                "MOBIL", 
                 350000));
-        controller.tambahDataAwal(new Kendaraan(
+        controller.tambahDataAwal(new Mobil(
                 "B 6789 KKK", 
                 "Toyota Supra", 
-                "MOBIL", 
                 450000));
-        controller.tambahDataAwal(new Kendaraan(
+        controller.tambahDataAwal(new Motor(
                 "B 1234 KKK", 
-                "Nissan GTR", 
-                "MOBIL", 
+                "Honda CBR 250cc",  
                 550000));
-        controller.tambahDataAwal(new Kendaraan(
+        controller.tambahDataAwal(new Minibus(
                 "B 1234 KKK", 
-                "Honda NSX", 
-                "MOBIL", 
-                650000));
+                "Toyota Hiace",  
+                900000));
         controller.jalankan();
     }
 }

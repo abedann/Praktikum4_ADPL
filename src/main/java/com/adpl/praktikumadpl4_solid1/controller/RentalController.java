@@ -5,11 +5,13 @@
 package com.adpl.praktikumadpl4_solid1.controller;
 
 import com.adpl.praktikumadpl4_solid1.model.Kendaraan;
+import com.adpl.praktikumadpl4_solid1.model.KendaraanFactory;
 import com.adpl.praktikumadpl4_solid1.model.KendaraanRepository;
 import com.adpl.praktikumadpl4_solid1.model.Penyewaan;
 import com.adpl.praktikumadpl4_solid1.model.PenyewaanRepository;
 import com.adpl.praktikumadpl4_solid1.view.RentalView;
 import com.adpl.praktikumadpl4_solid1.view.StrukView;
+import java.util.List;
 
 /**
  *
@@ -53,18 +55,19 @@ public class RentalController {
             return;
         }
         String merk = view.bacaTeks("Merk");
-        String jenis = view.bacaTeks("Jenis (MOBIL/MOTOR").toUpperCase();
-        if(!jenis.equals("MOTOR") && !jenis.equals("MOBIL")){
-            System.out.println("Jenis Tidak Dikenali");
+        // [OCP] Daftar jenis diambil dari Factory, bukan ditulis manual di Controller.
+        String jenis = view.bacaTeks("Jenis (" + String.join("/", KendaraanFactory.JENIS) + ")").toUpperCase();
+            if (!List.of(KendaraanFactory.JENIS).contains(jenis)) {
+            view.tampilPesan("Jenis tidak dikenal.");
             return;
         }
         long tarif = view.bacaAngka("Tarif per Hari");
         if(tarif<=0){
-            System.out.println("Tarif Harus Lebih Dari 0");
+            view.tampilPesan("Tarif harus lebih dari 0.");
             return;
         }
-        kendaraanRepo.tambah(new Kendaraan(plat, merk, jenis, tarif));
-        view.tampilPesan("Kendaraan Berhasil Ditambahkan");
+        kendaraanRepo.tambah(KendaraanFactory.buat(jenis, plat, merk, tarif));
+        view.tampilPesan("Kendaraan berhasil ditambahkan.");
     }
     
     public void sewaKendaraan(){
@@ -80,6 +83,9 @@ public class RentalController {
             view.tampilPesan("Lama Sewa Minimal 1 Hari");
             return;
         }
+        
+        //[OCP] Controller tidak tahu dan tidak perlu tahu jenis kendaraannya.
+        //      Polimorfisme memilih hitungBiaya() milik subclass yang tepat.
         long total = kendaraan.hitungBiaya(hari);
         Penyewaan sewa = new Penyewaan(plat, nama, kendaraan, hari, total);
         penyewaanRepo.tambah(sewa);
