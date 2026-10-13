@@ -8,6 +8,7 @@ import com.adpl.praktikumadpl4_solid1.controller.RentalController;
 import com.adpl.praktikumadpl4_solid1.model.Kendaraan;
 import com.adpl.praktikumadpl4_solid1.model.Minibus;
 import com.adpl.praktikumadpl4_solid1.model.Mobil;
+import com.adpl.praktikumadpl4_solid1.model.MobilPremium;
 import com.adpl.praktikumadpl4_solid1.model.Motor;
 
 /**
@@ -35,6 +36,11 @@ public class Main {
                 "B 1234 KKK", 
                 "Toyota Hiace",  
                 900000));
+        controller.tambahDataAwal(new MobilPremium(
+                "L 9999 VIP", 
+                "Toyota Alphard",
+                1500000)
+                );
         controller.jalankan();
     }
 }

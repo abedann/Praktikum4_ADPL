@@ -79,8 +79,11 @@ public class RentalController {
         }
         String nama = view.bacaTeks("Nama Penyewa");
         int hari = (int)view.bacaAngka("Lama Sewa (hari)");
-        if(hari<1){
-            view.tampilPesan("Lama Sewa Minimal 1 Hari");
+        //[LSP] Validasi memakai kontrak kelas induk, BUKAN instanceof MobilPremium.
+        //      Berlaku sama untuk semua jenis, termasuk jenis yang dibuat nanti.
+                if (hari < kendaraan.getMinimalHari()) {
+                        view.tampilPesan(kendaraan.getMerk() + " minimal disewa "
+                                + kendaraan.getMinimalHari() + " hari.");
             return;
         }
         
