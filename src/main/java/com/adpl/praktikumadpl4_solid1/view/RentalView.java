@@ -13,6 +13,9 @@ import java.util.Scanner;
  *
  * @author Abe.dann
  */
+
+//[SRP] Satu tanggung jawab: interaksi teks dengan pengguna
+//dengan hanya menampilkan menu/daftar dan membaca input, tidak ada logika bisnis. 
 public class RentalView {
     private final Scanner input = new Scanner(System.in);
     
@@ -59,6 +62,7 @@ public class RentalView {
         
     }
     
+    //Mengulang sampai pengguna benar-benar memasukkan data angka
     public long bacaAngka(String label){
         while(true){
             String teks = bacaTeks(label);

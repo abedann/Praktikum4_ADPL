@@ -10,6 +10,8 @@ import com.adpl.praktikumadpl4_solid1.model.Penyewaan;
  *
  * @author Abe.dann
  */
+
+//[SRP] satu tanggung jawab: format tampilan struk sewa.
 public class StrukView {
     public void cetak(Penyewaan p){
         System.out.println("------ STRUK SEWA ------");

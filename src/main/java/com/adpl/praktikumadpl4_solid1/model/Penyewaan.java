@@ -8,6 +8,8 @@ package com.adpl.praktikumadpl4_solid1.model;
  *
  * @author Abe.dann
  */
+
+//[SRP] Penyewaan hanya menyimpan data satu transaksi sewa.
 public class Penyewaan {
     private final String id;
     private final String namaPenyewa;

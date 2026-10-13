@@ -12,7 +12,7 @@ import java.util.List;
  * @author Abe.dann
  */
 
-//[SRP] 
+//[SRP] satu-satunya tanggung jawab: menyimpan & mencari data Penyewaan di ArrayList. 
 public class PenyewaanRepository {
     private final List<Penyewaan> data = new ArrayList<>();
     

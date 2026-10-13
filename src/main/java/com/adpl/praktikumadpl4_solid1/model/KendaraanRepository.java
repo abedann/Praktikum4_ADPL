@@ -12,7 +12,8 @@ import java.util.List;
  * @author Abe.dann
  */
 
-//[SRP]
+//[SRP] satu-satunya tanggung jawab: menyimpan & mencari kendaraan di ArrayList
+//Jika nanti penyimpanan data diganti, maka cukup class ini saja yang diganti.
 public class KendaraanRepository {
     private final List<Kendaraan> data = new ArrayList<>();
     

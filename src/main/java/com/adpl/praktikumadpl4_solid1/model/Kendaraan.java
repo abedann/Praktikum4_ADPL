@@ -8,6 +8,18 @@ package com.adpl.praktikumadpl4_solid1.model;
  *
  * @author Abe.dann
  */
+
+/* 
+[SRP]: 
+Kendaraan hanya bertanggung jawab atas DATA Kendaraan dan aturan bisnis miliknya sendiri (hitung biaya sewa).
+
+INFORMASI:
+Masalah dari hanya menggunakan tahap SRP adalah setiap jenis baru memaksa kita membongkar/mengubah logic di method hitungBiaya() dalam blok if-else
+dan validasi properti jenis(MOBIL/MOTOR) di Controller.
+Solusinya Class Kendaraan dijadikan abstract, dan setiap jenis punya kelas sendiri.
+Otomatis class Kendaraan tidak akan digunakan lagi.
+*/
+
 public class Kendaraan {
     private final String platNomor;
     private final String merk;
@@ -22,6 +34,8 @@ public class Kendaraan {
         this.tarifPerHari = tarifPerHari;
     }
     
+    //[BELUM OCP] if-else per jenis masih ada disini
+    //setiap ada jenis baru -> kelas ini harus diubah
     public long hitungBiaya(int hari){
         long total = tarifPerHari * hari;
         
